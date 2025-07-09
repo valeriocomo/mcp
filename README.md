@@ -1,4 +1,4 @@
-[![Open in Devcontainer](https://img.shields.io/badge/Open%20in-DevContainer-blue?logo=visualstudiocode&logoColor=white)](https://github.com/containers/devcontainer)
+[![Open in Devcontainer](https://img.shields.io/badge/Open%20in-DevContainer-blue?logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/valeriocomo/mcp)
 [![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in-GitHub%20Codespaces-blue?logo=github&logoColor=white)](https://github.com/codespaces/new?repo=valeriocomo/mcp)
 
 # MCP Multi-Server Agent Example
