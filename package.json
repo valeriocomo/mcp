@@ -1,0 +1,31 @@
+{
+  "name": "mcp",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "author": "Valerio Como",
+  "repository": {
+    "url": "https://github.com/valeriocomo/mcp"
+  },
+  "scripts": {
+    "start": "npx tsx index.ts"
+  },
+  "type": "module",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@langchain/langgraph": "^0.3.7",
+    "@langchain/mcp-adapters": "^0.5.3",
+    "@langchain/openai": "^0.5.18",
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "@modelcontextprotocol/server-everything": "^2025.7.1",
+    "dotenv": "^17.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.12"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "npm@10.9.2"
+}
