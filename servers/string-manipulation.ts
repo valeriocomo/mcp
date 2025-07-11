@@ -10,11 +10,26 @@ const server = new McpServer({
 server.registerTool("reverse",
     {
         title: "Reverse String",
+        annotations: {
+            title: "Annotation Reverse String",
+
+        },
         description: "Returns the reversed version of the input string.",
         inputSchema: { s: z.string() }
     },
     async ({ s }) => ({
         content: [{ type: "text", text: s ? s.split("").reverse().join("") : s }],
+    })
+);
+
+server.registerTool("uppercase",
+    {
+        title: "Uppercase String",
+        description: "Returns the input string converted to uppercase.",
+        inputSchema: { s: z.string() }
+    },
+    async ({ s }) => ({
+        content: [{ type: "text", text: s ? s.toUpperCase() : s }],
     })
 );
 

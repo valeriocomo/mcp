@@ -1,7 +1,10 @@
+import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { MultiServerMCPClient } from "@langchain/mcp-adapters";
 import { ChatOpenAI } from "@langchain/openai";
-import { createReactAgent } from "@langchain/langgraph/prebuilt";
+import { getDisplayName } from "@modelcontextprotocol/sdk/shared/metadataUtils.js";
 import * as dotenv from "dotenv";
+
+// Automatically handles the precedence: title → annotations.title → name
 
 dotenv.config();
 
@@ -18,7 +21,6 @@ const client = new MultiServerMCPClient({
             transport: "stdio",
             command: "npx",
             args: ["-y", "@modelcontextprotocol/server-everything"],
-            // Restart configuration for stdio transport
             restart: {
                 enabled: true,
                 maxAttempts: 3,
@@ -29,7 +31,6 @@ const client = new MultiServerMCPClient({
             transport: "stdio",
             command: "node",
             args: ["--experimental-strip-types", "servers/string-manipulation.ts"],
-            // Restart configuration for stdio transport
             restart: {
                 enabled: true,
                 maxAttempts: 3,
@@ -48,9 +49,8 @@ const client = new MultiServerMCPClient({
 
 const tools = await client.getTools();
 tools.forEach((tool) => {
-    console.log(`Tool: ${tool.name}`);
-    console.log(`Description: ${tool.description}`);
-    console.log(`Tool Metadata: ${JSON.stringify(tool.metadata, null, 2)}`);
+    const displayName = getDisplayName(tool as any);
+    console.log(`Tool Name: ${displayName}`);
     console.log(`\n`);
 });
 
@@ -85,5 +85,6 @@ const runAgent = async (content: string) => {
 // Run the agent
 await runAgent("Reverse the string 'Hello, World!'");
 await runAgent("What is the sum of 5 and 10?");
+await runAgent("Uppercase the string 'hello world'");
 
 await client.close();
